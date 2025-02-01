@@ -36,6 +36,14 @@ return {
 							-- class ([O]bject) text object
 							["ao"] = "@class.outer",
 							["io"] = "@class.inner",
+
+							-- comment ([M]essage) text object
+							["am"] = "@comment.outer",
+							["im"] = "$comment.inner",
+
+							-- call ([S]ubroutine) text object
+							["as"] = "@call.outer",
+							["is"] = "@call.inner",
 						},
 
 						include_surrounding_whitespace = false,

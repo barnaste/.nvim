@@ -1,16 +1,11 @@
 return {
-	{
-		"L3MON4D3/LuaSnip",
-		dependencies = { "saadparwaiz1/cmp_luasnip", "rafamadriz/friendly-snippets" },
-	},
-	{ "hrsh7th/cmp-buffer",   event = "InsertEnter" },
-	{ "hrsh7th/cmp-path",     event = "InsertEnter" },
-	{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+	{ "hrsh7th/cmp-buffer",      event = "InsertEnter" },
+	{ "hrsh7th/cmp-path",        event = "InsertEnter" },
+	{ "hrsh7th/cmp-nvim-lsp",    event = "InsertEnter" },
+	{ "saadparwaiz1/cmp_luasnip" },
 	{
 		"hrsh7th/nvim-cmp",
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
@@ -106,7 +101,6 @@ return {
 					{ name = "buffer",  option = { keyword_pattern = [[\k\+]] } },
 					{ name = "path" },
 					{ name = "luasnip" }, -- For luasnip users.
-					-- { name = 'ultisnips' }, -- For ultisnips users.
 				}, {
 					{ name = "buffer" },
 				}),
@@ -114,6 +108,9 @@ return {
 
 			-- insert '(' after selecting a function
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+			-- disable completions in .tex files (here we use custom snippets instead)
+			require("cmp").setup.filetype("tex" --[[ , { sources = {} } ]])
 		end,
 	},
 }

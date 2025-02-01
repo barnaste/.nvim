@@ -10,6 +10,16 @@ return {
 		end,
 	},
 	{
+		"rachartier/tiny-devicons-auto-colors.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		event = "VeryLazy",
+		config = function()
+			require("tiny-devicons-auto-colors").setup()
+		end,
+	},
+	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
@@ -37,7 +47,7 @@ return {
 		"kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" },
 		config = function()
-			vim.o.foldcolumn = "1" -- '0' is not bad
+			vim.o.foldcolumn = "0" -- '0' is not bad
 			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 			vim.o.foldlevelstart = 99
 			vim.o.foldenable = true
