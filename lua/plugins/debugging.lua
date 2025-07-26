@@ -42,5 +42,22 @@ return {
 		-- language-specific setup
 		require("dapui").setup()
 		require("dap-python").setup("/home/jade/.virtualenv/debugpy/bin/python")
+		dap.adapters.lldb = {
+			type = "executable",
+			command = "/usr/bin/lldb-dap",
+			name = "lldb",
+		}
+		dap.configurations.rust = {
+			{
+				name = "Debug",
+				type = "lldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}/target/debug",
+				stopOnEntry = false,
+			},
+		}
 	end,
 }

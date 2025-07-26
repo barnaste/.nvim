@@ -17,7 +17,6 @@ return {
 					"ruff",
 					"rust_analyzer",
 					"clangd",
-					--[[ "clangd", "rust_analyzer" ]]
 				},
 			})
 
