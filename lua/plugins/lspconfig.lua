@@ -13,19 +13,26 @@ return {
 				-- This setting has no relation with the `automatic_installation` setting.
 				ensure_installed = {
 					"lua_ls",
-					"basedpyright",
-					"ruff",
 					"rust_analyzer",
 					"clangd",
+					"tinymist",
 				},
 			})
 
 			local lspconfig = require("lspconfig")
+
+			require("lspconfig")["tinymist"].setup({
+				settings = {
+					formatterMode = "typstyle",
+					exportPdf = "onType",
+					semanticTokens = "disable",
+				},
+			})
+
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp_attach = function(client, bufnr)
 				-- Create your keybindings here...
 			end
-			require("mason-lspconfig").setup_handlers({})
 		end,
 	},
 	{
@@ -49,6 +56,8 @@ return {
 					sorting_strategy = "ascending",
 				})
 			end, {})
+
+			require("lspconfig").clang.setup()
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer

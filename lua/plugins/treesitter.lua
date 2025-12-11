@@ -17,6 +17,7 @@ return {
 				"regex",
 				"rust",
 				"toml",
+				"typst",
 			},
 			--auto_install = true,
 			highlight = { enable = true },

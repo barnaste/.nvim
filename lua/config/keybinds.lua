@@ -44,3 +44,7 @@ vim.keymap.set("n", "<leader>fr", builtin.oldfiles, {})
 -- Spider
 
 -- TODO comments
+
+-- Typst Preview
+vim.keymap.set("n", "<leader>tp", ":TypstPreview<CR>")
+vim.keymap.set("n", "<leader>tc", ":TypstPreviewSyncCursor<CR>")
